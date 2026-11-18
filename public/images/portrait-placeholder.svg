@@ -1,0 +1,21 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" role="img" aria-label="Editorial portrait placeholder for Matthew Ogieva" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2b2a27"/>
+      <stop offset="100%" stop-color="#171717"/>
+    </linearGradient>
+    <linearGradient id="figure" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3c3a35"/>
+      <stop offset="100%" stop-color="#242321"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <rect x="48" y="48" width="1104" height="1404" fill="none" stroke="#C6A15B" stroke-width="2" opacity="0.55"/>
+  <circle cx="600" cy="590" r="190" fill="url(#figure)"/>
+  <path d="M240 1500c0-250 161-430 360-430s360 180 360 430z" fill="url(#figure)"/>
+  <path d="M600 400c-62 0-112 50-112 112v66c0 72 50 132 112 132s112-60 112-132v-66c0-62-50-112-112-112z" fill="#4A4844"/>
+  <rect x="150" y="1230" width="120" height="2" fill="#C6A15B"/>
+  <text x="150" y="1300" font-family="Georgia, 'Times New Roman', serif" font-size="58" fill="#FAF9F6">Matthew Ogieva</text>
+  <text x="150" y="1354" font-family="Helvetica, Arial, sans-serif" font-size="24" letter-spacing="4" fill="#C6A15B">PORTRAIT PLACEHOLDER</text>
+  <text x="150" y="1396" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#6F6B64">Replace with approved high-resolution photography.</text>
+</svg>

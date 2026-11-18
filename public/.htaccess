@@ -1,0 +1,105 @@
+# The Industry Leader — Apache configuration for Hostinger static hosting.
+# Upload this file to public_html/ alongside the contents of out/.
+# Hidden files must be included when uploading.
+
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+AddDefaultCharset UTF-8
+
+# Never serve this file or directory listings.
+<Files ".htaccess">
+  Require all denied
+</Files>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS (skip when a proxy already terminated TLS).
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://theindustryleader.net%{REQUEST_URI} [R=301,L]
+
+  # Canonical host: www -> non-www.
+  RewriteCond %{HTTP_HOST} ^www\.theindustryleader\.net$ [NC]
+  RewriteRule ^ https://theindustryleader.net%{REQUEST_URI} [R=301,L]
+
+  # Legacy WordPress and previous-site URLs.
+  RewriteRule ^services/?$ /program/ [R=301,L]
+  RewriteRule ^blog/?$ /#insights [R=301,NE,L]
+  RewriteRule ^becoming-a-top-1/?$ /insights/becoming-a-top-1/ [R=301,L]
+  RewriteRule ^feed/?$ /rss.xml [R=301,L]
+  RewriteRule ^comments/feed/?$ /rss.xml [R=301,L]
+  RewriteRule ^sitemap\.rss$ /sitemap.xml [R=301,L]
+
+  # Retired pages whose content now lives on the homepage.
+  # [NE] keeps the # fragment literal instead of encoding it as %23.
+  RewriteRule ^about/?$ /#about [R=301,NE,L]
+  RewriteRule ^apply/?$ /#apply [R=301,NE,L]
+  RewriteRule ^insights/?$ /#insights [R=301,NE,L]
+  RewriteRule ^insights/category(/.*)?$ /#insights [R=301,NE,L]
+  RewriteRule ^free-guide/?$ /#free-guide [R=301,NE,L]
+
+  # Results became Projects.
+  RewriteRule ^results/?$ /projects/ [R=301,L]
+
+  # Note: /free-guide/thank-you/ is a real page and is intentionally not
+  # covered by the /free-guide/ redirect above; the guide form posts there.
+
+  # Retire WordPress endpoints permanently.
+  RewriteRule ^wp-admin(/.*)?$ - [G,L]
+  RewriteRule ^wp-login\.php$ - [G,L]
+  RewriteRule ^wp-json(/.*)?$ - [G,L]
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 0 seconds"
+  ExpiresByType application/rss+xml "access plus 0 seconds"
+  ExpiresByType text/plain "access plus 0 seconds"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # HTML and feeds revalidate; fingerprints assets are immutable.
+  <FilesMatch "\.(html|xml|txt)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(css|js|woff2|png|jpg|jpeg|webp|avif|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.pdf$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # Security headers.
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; font-src 'self' data:; connect-src 'self' https://formspree.io https://*.formspree.io https://api.web3forms.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; form-action 'self' https://formspree.io https://*.formspree.io https://api.web3forms.com; frame-src https://cal.com https://app.cal.com https://calendly.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+</IfModule>

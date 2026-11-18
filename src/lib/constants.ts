@@ -15,11 +15,3 @@ export const SOCIAL_LINKS = [
   { label: "YouTube", href: "https://www.youtube.com/" },
   { label: "Instagram", href: "https://www.instagram.com/" },
 ] as const;
-
-export const NAV_ITEMS = [
-  { label: "About", href: "/about/" },
-  { label: "Program", href: "/program/" },
-  { label: "Results", href: "/results/" },
-  { label: "Insights", href: "/insights/" },
-  { label: "Contact", href: "/contact/" },
-] as const;

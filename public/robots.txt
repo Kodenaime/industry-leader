@@ -1,0 +1,7 @@
+# Robots for https://theindustryleader.net
+User-agent: *
+Allow: /
+Disallow: /style-guide/
+Disallow: /free-guide/thank-you/
+
+Sitemap: https://theindustryleader.net/sitemap.xml

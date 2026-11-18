@@ -4,22 +4,27 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run seo:generate && next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "content:check": "tsx scripts/check-content.ts",
+    "seo:generate": "tsx scripts/generate-seo-files.mjs",
+    "seo:audit": "tsx scripts/audit-seo.mjs",
+    "og:generate": "tsx scripts/generate-og.mjs",
+    "images:optimize": "tsx scripts/optimize-images.mjs",
+    "release": "tsx scripts/release.mjs",
+    "test:e2e": "playwright test",
     "preview": "npx serve out"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
-    "@radix-ui/react-slot": "^1.2.4",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.23.26",
+    "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.562.0",
     "next": "16.4.6",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-hook-form": "^7.69.0",
@@ -31,6 +36,8 @@
     "zod": "^4.2.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.1",
     "@tailwindcss/turbopack": "4.3.3",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20",
@@ -40,6 +47,7 @@
     "eslint-config-next": "16.4.6",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
+    "sharp": "^0.35.5",
     "tailwindcss": "4.3.3",
     "tsx": "^4.21.0",
     "typescript": "^5"

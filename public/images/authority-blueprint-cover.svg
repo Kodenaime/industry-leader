@@ -1,0 +1,32 @@
+<svg width="800" height="1040" viewBox="0 0 800 1040" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">The Authority Blueprint guide cover</title>
+  <desc id="desc">A branded cover for the free guide, The Authority Blueprint.</desc>
+  <rect width="800" height="1040" fill="#F4F2EE"/>
+  <rect width="800" height="14" fill="#C6A15B"/>
+  <rect x="0" y="1026" width="800" height="14" fill="#C6A15B"/>
+
+  <text x="72" y="140" font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="6" fill="#8C6A35">FREE GUIDE</text>
+  <rect x="72" y="170" width="80" height="2" fill="#C6A15B"/>
+
+  <text x="72" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="82" font-weight="600" letter-spacing="-2" fill="#171717">The Authority</text>
+  <text x="72" y="390" font-family="Georgia, 'Times New Roman', serif" font-size="82" font-weight="600" letter-spacing="-2" fill="#171717">Blueprint</text>
+
+  <text x="72" y="470" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#4A4844">Five shifts that make you the leader</text>
+  <text x="72" y="504" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#4A4844">your industry follows.</text>
+
+  <rect x="72" y="616" width="656" height="1" fill="#E2DED6"/>
+
+  <text x="72" y="666" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="4" fill="#6F6B64">INSIDE</text>
+  <text x="72" y="704" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#242321">Own your leadership identity</text>
+  <text x="72" y="740" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#242321">Sharpen a point of view that commands attention</text>
+  <text x="72" y="776" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#242321">Build influence without relying on title</text>
+  <text x="72" y="812" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#242321">Communicate with executive presence</text>
+  <text x="72" y="848" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#242321">Turn clarity into a 90-day plan</text>
+
+  <circle cx="676" cy="916" r="46" fill="#242321"/>
+  <text x="676" y="931" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#E9DCC3">IL</text>
+
+  <text x="72" y="906" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="3" fill="#6F6B64">THE INDUSTRY LEADER</text>
+  <text x="72" y="936" font-family="Helvetica, Arial, sans-serif" font-size="19" fill="#242321">Matthew Ogieva</text>
+  <text x="72" y="964" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#6F6B64">Business Reimagined Incorporated</text>
+</svg>

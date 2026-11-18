@@ -12,6 +12,15 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+
+# local audit output
+/reports/
+/releases/
+/build.log
+/e2e-*.log
+/seo-audit.log
 
 # next.js
 /.next/

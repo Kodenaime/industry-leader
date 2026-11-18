@@ -1,0 +1,105 @@
+import type { Program } from "@/lib/content/schemas";
+
+export const program: Program = {
+  slug: "becoming-an-industry-leader",
+  name: "Becoming an Industry Leader",
+  eyebrow: "8-week 1:1 coaching program",
+  headline: "Become the leader your industry follows.",
+  subheadline:
+    "In eight weeks, build the clarity, presence, and influence that make you the leader others seek out.",
+  description:
+    "A private, application-only coaching program for capable professionals who are ready to turn expertise into authority, influence, and lasting impact.",
+  duration: "8 weeks",
+  format: "1:1 private coaching",
+  audience: [
+    "Ambitious managers and senior professionals",
+    "Executives preparing for greater scope",
+    "Founders and consultants seeking authority",
+    "High performers who are capable but not yet recognized as leaders",
+  ],
+  notFor: [
+    "Anyone looking for a shortcut that avoids real practice",
+    "Leaders who want someone else to do the thinking for them",
+    "People who are not willing to make time between sessions",
+    "Teams looking for group training rather than one-to-one coaching",
+  ],
+  outcomes: [
+    "A clear leadership identity and a vision others can follow",
+    "A sharp point of view that positions you as the authority in your space",
+    "The ability to influence stakeholders and build trust without relying on title",
+    "Executive presence and communication that command attention",
+    "Stronger strategic judgment for high-stakes decisions",
+    "A 90-day plan that turns clarity into visible momentum",
+  ],
+  curriculum: [
+    {
+      id: "week-1",
+      week: 1,
+      title: "The Leader You Are Becoming",
+      summary: "Identity, vision, and leadership brand.",
+      outcomes: ["Define the leader you intend to become", "Anchor your leadership brand in a clear vision"],
+    },
+    {
+      id: "week-2",
+      week: 2,
+      title: "Clarity That Commands Attention",
+      summary: "Positioning, point of view, and message.",
+      outcomes: ["Sharpen your point of view", "Build a message that is clear and memorable"],
+    },
+    {
+      id: "week-3",
+      week: 3,
+      title: "Influence Without Authority",
+      summary: "Stakeholders, trust, and persuasion.",
+      outcomes: ["Map and influence key stakeholders", "Build trust without relying on title"],
+    },
+    {
+      id: "week-4",
+      week: 4,
+      title: "Executive Presence & Communication",
+      summary: "Storytelling, speaking, and difficult conversations.",
+      outcomes: ["Communicate with presence and clarity", "Hold difficult conversations with confidence"],
+    },
+    {
+      id: "week-5",
+      week: 5,
+      title: "Strategic Judgment",
+      summary: "Decisions, systems thinking, and prioritization.",
+      outcomes: ["Make higher-quality decisions under pressure", "Prioritize what actually moves the business"],
+    },
+    {
+      id: "week-6",
+      week: 6,
+      title: "Building High-Performance Teams",
+      summary: "Culture, accountability, and engagement.",
+      outcomes: ["Shape a culture of accountability", "Raise team engagement and performance"],
+    },
+    {
+      id: "week-7",
+      week: 7,
+      title: "Ethical Leadership & Reputation",
+      summary: "Integrity, visibility, and legacy.",
+      outcomes: ["Lead with integrity and consistency", "Build a reputation that compounds"],
+    },
+    {
+      id: "week-8",
+      week: 8,
+      title: "The Industry Leader in Action",
+      summary: "90-day plan, thought leadership, and accountability.",
+      outcomes: ["Create a concrete 90-day plan", "Activate thought leadership with accountability"],
+    },
+  ],
+  includes: [
+    "8 × 60-minute 1:1 sessions",
+    "Leadership diagnostic",
+    "90-day roadmap",
+    "Practical templates",
+    "Between-session support",
+    "Completion review",
+  ],
+  investmentNote:
+    "Application-only. Investment and start date are discussed on your discovery call.",
+  ctaLabel: "Apply for the Program",
+  ctaHref: "/#apply",
+  faqIds: ["faq-who", "faq-format", "faq-time", "faq-investment", "faq-outcomes", "faq-apply"],
+};

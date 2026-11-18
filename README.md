@@ -1,34 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Industry Leader
 
-## Getting Started
+Static marketing site for **The Industry Leader** — leadership coaching by
+Matthew Ogieva, Business Reimagined Incorporated.
 
-First, run the development server:
+Built with Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS 4.
+The site exports to plain HTML/CSS/JS and is hosted on Hostinger. There is no
+backend, database, API route, server action, ISR, or middleware.
+
+## Pages
+
+The site has five standalone pages: `/` (Home), `/program/`, `/projects/`,
+`/testimonials/`, and `/contact/`. About, Apply, Insights, and Free Guide content
+now live as sections on the homepage; individual insight articles remain at
+`/insights/<slug>/`. Old URLs are redirected in `public/.htaccess`.
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # fill in optional form/booking/analytics values
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Checks
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run typecheck
+npm run content:check
+npm run build
+npm run seo:audit
+npm run test:e2e
+```
 
-## Learn More
+`npm run build` writes the static site to `out/`. `npm run release` packages
+`out/` (including `.htaccess`) into `releases/industry-leader-<timestamp>.zip`
+for upload to Hostinger `public_html/`.
 
-To learn more about Next.js, take a look at the following resources:
+## Documentation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Handover guide](docs/handover.md) — edit content, rebuild, upload, roll back.
+- [Hostinger deployment checklist](docs/hostinger-deployment.md) — DNS, SSL,
+  redirects, headers, forms, sitemap submission, monitoring.
+- [QA report](docs/qa-report.md) — Lighthouse, Axe, SEO audit, bundle findings,
+  placeholders, and launch warnings.
+- `plan.md` and `prompts.md` — original content, IA, and build specification.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Environment variables
 
-## Deploy on Vercel
+Copy `.env.example` to `.env.local`. All values are public and are baked in at
+build time; never put secrets in `NEXT_PUBLIC_*` variables.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL |
+| `NEXT_PUBLIC_BOOKING_URL` | Cal.com/Calendly link (falls back to `/contact/`) |
+| `NEXT_PUBLIC_FORMSPREE_CONTACT_ENDPOINT` | Contact form |
+| `NEXT_PUBLIC_FORMSPREE_APPLICATION_ENDPOINT` | Application form |
+| `NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ENDPOINT` | Newsletter form |
+| `NEXT_PUBLIC_FORMSPREE_GUIDE_ENDPOINT` | Free-guide form |
+| `NEXT_PUBLIC_ANALYTICS_ID` | GA4 ID; analytics and consent banner stay off when empty |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Before launch
+
+Replace the placeholder free-guide PDF
+(`public/downloads/the-authority-blueprint-placeholder.pdf`), obtain permission
+to republish the recovered client quotes and headshots in
+`content/testimonials.ts`, and configure Formspree and booking endpoints. See
+`docs/qa-report.md` for the full list of placeholders and warnings.

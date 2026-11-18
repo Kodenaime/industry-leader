@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Industry Leader — Insights</title>
+    <link>https://theindustryleader.net/#insights</link>
+    <description>Essays on leadership, authority, influence, and executive presence.</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://theindustryleader.net/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building High-Performance Teams</title>
+      <link>https://theindustryleader.net/insights/building-high-performance-teams/</link>
+      <guid isPermaLink="true">https://theindustryleader.net/insights/building-high-performance-teams/</guid>
+      <description>High performance is built on culture, accountability, and engagement — not just talent.</description>
+      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
+      <category>teams</category>
+    </item>
+    <item>
+      <title>Strategic Judgment</title>
+      <link>https://theindustryleader.net/insights/strategic-judgment/</link>
+      <guid isPermaLink="true">https://theindustryleader.net/insights/strategic-judgment/</guid>
+      <description>The best leaders are not the busiest. They are the clearest about what matters and what comes next.</description>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 GMT</pubDate>
+      <category>leadership</category>
+    </item>
+    <item>
+      <title>Executive Presence &amp; Communication</title>
+      <link>https://theindustryleader.net/insights/executive-presence-and-communication/</link>
+      <guid isPermaLink="true">https://theindustryleader.net/insights/executive-presence-and-communication/</guid>
+      <description>Presence is not charisma. It is the discipline of communicating with clarity, brevity, and confidence.</description>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
+      <category>presence</category>
+    </item>
+    <item>
+      <title>Influence Without Authority</title>
+      <link>https://theindustryleader.net/insights/influence-without-authority/</link>
+      <guid isPermaLink="true">https://theindustryleader.net/insights/influence-without-authority/</guid>
+      <description>You do not need a bigger title to build more trust. You need a more deliberate approach to influence.</description>
+      <pubDate>Wed, 20 May 2026 00:00:00 GMT</pubDate>
+      <category>influence</category>
+    </item>
+    <item>
+      <title>Clarity That Commands Attention</title>
+      <link>https://theindustryleader.net/insights/clarity-that-commands-attention/</link>
+      <guid isPermaLink="true">https://theindustryleader.net/insights/clarity-that-commands-attention/</guid>
+      <description>Leaders earn attention when they stop over-explaining and start saying something worth repeating.</description>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+      <category>authority</category>
+    </item>
+    <item>
+      <title>Becoming a Top 1% Leader</title>
+      <link>https://theindustryleader.net/insights/becoming-a-top-1/</link>
+      <guid isPermaLink="true">https://theindustryleader.net/insights/becoming-a-top-1/</guid>
+      <description>A placeholder article for the recovered blog post. Final copy to be rewritten or approved with permission.</description>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
+      <category>leadership</category>
+    </item>
+  </channel>
+</rss>

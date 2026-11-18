@@ -1,1 +1,309 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Colors */
+  --color-ink: #171717;
+  --color-charcoal: #242321;
+  --color-graphite: #4a4844;
+  --color-stone: #6f6b64;
+  --color-mist: #f4f2ee;
+  --color-cloud: #faf9f6;
+  --color-line: #e2ded6;
+  --color-gold: #c6a15b;
+  --color-gold-deep: #7c5c24;
+  --color-gold-soft: #e9dcc3;
+  --color-success: #2f6b4f;
+  --color-error: #a33a2b;
+
+  /* Typography */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope", "Segoe UI", system-ui, sans-serif;
+
+  /* Spacing rhythm */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-30: 7.5rem;
+
+  /* Layout widths */
+  --container-container: 75rem;
+  --container-wide: 85rem;
+  --container-prose: 45rem;
+
+  /* Radii */
+  --radius-none: 0px;
+  --radius-sm: 1px;
+  --radius-DEFAULT: 2px;
+  --radius-md: 4px;
+
+  /* Shadows */
+  --shadow-soft: 0 1px 2px rgba(23, 23, 23, 0.04), 0 8px 24px rgba(23, 23, 23, 0.06);
+  --shadow-lift: 0 2px 4px rgba(23, 23, 23, 0.05), 0 12px 32px rgba(23, 23, 23, 0.08);
+
+  /* Motion */
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-fade-up: fade-up 600ms var(--ease-brand) both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-mist);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.75;
+  }
+
+  ::selection {
+    background-color: var(--color-gold-soft);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-deep);
+    outline-offset: 2px;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    display: block;
+    max-width: 100%;
+  }
+
+  img {
+    height: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .type-display {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+
+  .type-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .type-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+
+  .type-h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    line-height: 1.2;
+  }
+
+  .type-h4 {
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 1.5vw, 1.35rem);
+    line-height: 1.3;
+  }
+
+  .type-lead {
+    font-size: clamp(1.125rem, 1.2vw, 1.25rem);
+    line-height: 1.7;
+  }
+
+  .type-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.2;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .prose-base {
+    max-width: var(--container-prose);
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-graphite);
+  }
+
+  .container-site {
+    width: 100%;
+    max-width: var(--container-container);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-site {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container-site {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-site {
+      padding-inline: 3rem;
+    }
+  }
+
+  .container-wide {
+    width: 100%;
+    max-width: var(--container-wide);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-wide {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container-wide {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-wide {
+      padding-inline: 3rem;
+    }
+  }
+
+  .section-space {
+    padding-block: 4rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-space {
+      padding-block: 5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-space {
+      padding-block: 6rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .section-space {
+      padding-block: 8rem;
+    }
+  }
+
+  .grain-overlay {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .grain-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+}
+
+@keyframes header-scrolled {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* CSS scroll-driven header state: no client listener or re-render on scroll.
+   Only opacity is animated, so the change stays on the compositor. Browsers
+   without scroll timelines keep the solid fallback panel. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-bottom: 1px solid var(--color-line);
+  background-color: rgb(244 242 238 / 0.95);
+  opacity: 1;
+  pointer-events: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .site-header::before {
+      animation: header-scrolled linear both;
+      animation-timeline: scroll();
+      animation-range: 0 6rem;
+    }
+  }
+}
+
+@layer components {
+  /* Defaults live in the components layer so contextual text-* utilities win. */
+  .type-lead {
+    color: var(--color-graphite);
+  }
+
+  .type-eyebrow {
+    color: var(--color-gold-deep);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

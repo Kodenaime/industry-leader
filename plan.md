@@ -77,21 +77,21 @@ HR or people leader looking for leadership development. Needs credibility, outco
 
 | Page | URL | Purpose |
 |---|---|---|
-| Home | `/` | Positioning, proof, program overview, conversion |
-| About | `/about/` | Matthew's story, philosophy, credentials |
+| Home | `/` | Positioning, proof, program, About, Testimonials, Projects, Insights, Free Guide, Apply, FAQ, conversion |
 | Program | `/program/` | Full 8-week program detail |
-| Apply | `/apply/` | Multi-step application form |
-| Results | `/results/` | Testimonials and outcomes |
-| Insights | `/insights/` | Article index |
-| Insight post | `/insights/[slug]/` | SEO content |
-| Category | `/insights/category/[category]/` | Topic archive |
-| Free Guide | `/free-guide/` | Lead magnet landing page |
-| Thank You | `/free-guide/thank-you/` | Download confirmation |
+| Projects | `/projects/` | Case studies and outcome framing |
+| Testimonials | `/testimonials/` | All recovered client quotes |
 | Contact | `/contact/` | Contact form + booking |
+| Insight post | `/insights/[slug]/` | SEO content (listed on the homepage) |
+| Thank You | `/free-guide/thank-you/` | Download confirmation |
 | Privacy | `/privacy/` | Legal |
 | Terms | `/terms/` | Legal |
 | Cookies | `/cookies/` | Legal |
 | 404 | `/404.html` | Error page |
+
+Retired standalone pages (`/about/`, `/apply/`, `/insights/`,
+`/insights/category/<topic>/`, `/free-guide/`, `/results/`) redirect to their
+new homepage anchors or replacement page in `public/.htaccess`.
 
 ### 1.7 Functional Requirements
 
@@ -686,7 +686,7 @@ Phase 1 has **no runtime database**. The "database" is a typed content model sto
 |---|---|
 | SiteSettings | name, legalName, tagline, description, url, email, phone, location, bookingUrl, socials, formEndpoints, analyticsId |
 | Author | id, name, credentials[], shortBio, longBio, portrait, email, socials[], books[], talks[] |
-| Program | slug, name, eyebrow, headline, subheadline, description, duration, format, audience[], outcomes[], curriculum[], includes[], investmentNote, ctaLabel, ctaHref, faqIds[], testimonialIds[], seo |
+| Program | slug, name, eyebrow, headline, subheadline, description, duration, format, audience[], outcomes[], curriculum[], includes[], investmentNote, ctaLabel, ctaHref, faqIds[], seo |
 | CurriculumWeek | id, week, title, summary, outcomes[] |
 | Testimonial | id, quote, author, role, company, location, image, featured, programSlug, tags[], order |
 | Post | slug, title, excerpt, category, tags[], publishedAt, updatedAt, authorId, coverImage, coverAlt, featured, draft, seo, body |
@@ -1017,8 +1017,12 @@ The old site was a WordPress/Elementor/Astra build for Business Reimagined Incor
 
 **Redirect map**
 - `/services/` → `/program/`
-- `/testimonials/` → `/results/`
-- `/blog/` → `/insights/`
+- `/about/` → `/#about`
+- `/apply/` → `/#apply`
+- `/insights/` and `/insights/category/<topic>/` → `/#insights`
+- `/free-guide/` → `/#free-guide`
+- `/results/` → `/projects/`
+- `/blog/` → `/#insights`
 - `/becoming-a-top-1/` → `/insights/becoming-a-top-1/`
 - `/feed/` → `/rss.xml`
 - `/comments/feed/` → `/rss.xml`
