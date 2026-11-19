@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -22,9 +21,6 @@ export default function NotFound() {
             Contact
           </Button>
         </div>
-        <p className="text-sm text-stone">
-          Looking for insights? Read the <Link href="/#insights" className="text-gold-deep underline underline-offset-4">latest essays</Link> on the homepage.
-        </p>
       </Container>
     </Section>
   );

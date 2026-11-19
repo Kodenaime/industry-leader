@@ -15,6 +15,7 @@ const SITE_URL = site.url.replace(/\/$/, "");
 const STATIC_ROUTES = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
   { path: "/program/", priority: "0.9", changefreq: "monthly" },
+  { path: "/about/", priority: "0.8", changefreq: "monthly" },
   { path: "/projects/", priority: "0.8", changefreq: "monthly" },
   { path: "/testimonials/", priority: "0.8", changefreq: "monthly" },
   { path: "/contact/", priority: "0.7", changefreq: "monthly" },
@@ -121,9 +122,9 @@ function buildRss(posts) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${xmlEscape(`${site.name} — Insights`)}</title>
-    <link>${xmlEscape(`${SITE_URL}/#insights`)}</link>
-    <description>${xmlEscape("Essays on leadership, authority, influence, and executive presence.")}</description>
+    <title>${xmlEscape(site.name)}</title>
+    <link>${xmlEscape(SITE_URL)}</link>
+    <description>${xmlEscape(site.description)}</description>
     <language>en-us</language>
     <lastBuildDate>${lastBuild}</lastBuildDate>
     <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />

@@ -131,12 +131,16 @@ export function ApplicationForm() {
     });
 
     if (!result.ok) {
-      trackEvent("form_error", { form: "application", status: result.status });
+      trackEvent("form_error", {
+        form: "application",
+        status: result.status,
+        submissionId: result.submissionId,
+      });
       setStatus({ type: "error", message: result.message });
       return;
     }
 
-    trackEvent("form_success", { form: "application" });
+    trackEvent("form_success", { form: "application", submissionId: result.submissionId });
     setStatus({ type: "success", message: result.message });
   };
 

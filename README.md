@@ -9,10 +9,16 @@ backend, database, API route, server action, ISR, or middleware.
 
 ## Pages
 
-The site has five standalone pages: `/` (Home), `/program/`, `/projects/`,
-`/testimonials/`, and `/contact/`. About, Apply, Insights, and Free Guide content
-now live as sections on the homepage; individual insight articles remain at
-`/insights/<slug>/`. Old URLs are redirected in `public/.htaccess`.
+The site has six standalone pages: `/` (Home), `/program/`, `/about/`,
+`/projects/`, `/testimonials/`, and `/contact/`. Apply lives on the homepage;
+the Free Guide and FAQs live on `/contact/`, and How It Works lives on
+`/projects/`. Insight publishing is paused until archive-approved article copy
+is available; the `/insights/<slug>/` route can be restored when approved posts
+exist. Old URLs are redirected in `public/.htaccess`.
+
+All four forms post to one public Formspree endpoint (`NEXT_PUBLIC_FORMSPREE_ENDPOINT`).
+Each submission carries a form name, submission ID, and analytics event so a
+single Formspree inbox can be filtered and tracked.
 
 ## Local development
 
@@ -44,6 +50,7 @@ for upload to Hostinger `public_html/`.
   redirects, headers, forms, sitemap submission, monitoring.
 - [QA report](docs/qa-report.md) — Lighthouse, Axe, SEO audit, bundle findings,
   placeholders, and launch warnings.
+- [Image sources](docs/image-sources.md) — provenance and licensing for section photography.
 - `plan.md` and `prompts.md` — original content, IA, and build specification.
 
 ## Environment variables

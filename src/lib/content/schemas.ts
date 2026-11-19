@@ -179,7 +179,7 @@ export const caseStudySchema = z.object({
   context: z.string().min(1),
   challenge: z.string().min(1),
   shift: z.string().min(1),
-  outcome: z.string().min(1),
+  outcome: z.string().min(1).optional(),
   anonymous: z.boolean().default(true),
   placeholder: z.boolean().default(false),
   order: z.number().int().nonnegative(),

@@ -5,9 +5,8 @@ export const PROGRAM_HREF = "/program/";
 export const PROJECTS_HREF = "/projects/";
 export const TESTIMONIALS_HREF = "/testimonials/";
 export const CONTACT_HREF = "/contact/";
-export const FREE_GUIDE_HREF = "/#free-guide";
-export const ABOUT_HREF = "/#about";
-export const INSIGHTS_HREF = "/#insights";
+export const FREE_GUIDE_HREF = "/contact/#free-guide";
+export const ABOUT_HREF = "/about/";
 
 /** Falls back to the contact page until a scheduling link is configured. */
 export const BOOKING_HREF = SITE.bookingUrl || CONTACT_HREF;

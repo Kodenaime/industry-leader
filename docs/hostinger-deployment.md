@@ -48,23 +48,23 @@ Replace `example` values as needed. `curl -I` should show `301`, `404`, or `410`
 | `http://theindustryleader.net/` | `301` → `https://theindustryleader.net/` |
 | `https://www.theindustryleader.net/` | `301` → `https://theindustryleader.net/` |
 | `/services/` | `301` → `/program/` |
-| `/about/` | `301` → `/#about` |
 | `/apply/` | `301` → `/#apply` |
-| `/insights/` and `/insights/category/<topic>/` | `301` → `/#insights` |
-| `/free-guide/` | `301` → `/#free-guide` |
+| `/insights/` and `/insights/category/<topic>/` | `301` → `/` |
+| `/free-guide/` | `301` → `/contact/#free-guide` |
 | `/results/` | `301` → `/projects/` |
-| `/blog/` | `301` → `/#insights` |
-| `/becoming-a-top-1/` | `301` → `/insights/becoming-a-top-1/` |
+| `/blog/` | `301` → `/` |
+| `/becoming-a-top-1/` | `301` → `/` |
 | `/feed/` and `/comments/feed/` | `301` → `/rss.xml` |
 | `/sitemap.rss` | `301` → `/sitemap.xml` |
 | `/wp-admin/`, `/wp-login.php`, `/wp-json/` | `410 Gone` |
 | `/this-page-does-not-exist/` | `404` with the branded 404 page |
 | `/style-guide/` | `200` with `noindex`; not linked publicly |
 | `/free-guide/thank-you/` | `200` with `noindex` and `Disallow` in robots.txt |
-| `/program/`, `/projects/`, `/testimonials/`, `/contact/` | `200` |
+| `/program/`, `/about/`, `/projects/`, `/testimonials/`, `/contact/` | `200` |
 
-- [ ] Fragment redirects preserve `#` (check the `Location` header is `/#about`,
-      not `/%23about`) — the rules use Apache's `[NE]` flag
+- [ ] Fragment redirects preserve `#` (check the `Location` header is
+      `/contact/#free-guide`, not `/contact/%23free-guide`) — the rules use
+      Apache's `[NE]` flag
 
 - [ ] All redirects above verified
 - [ ] 404 page shows the branded design and returns HTTP 404 (not 200)
@@ -94,12 +94,12 @@ curl -I https://theindustryleader.net/og/home.png
 ## 5. SEO files and metadata
 
 - [ ] `https://theindustryleader.net/robots.txt` returns 200 and references the sitemap
-- [ ] `https://theindustryleader.net/sitemap.xml` returns 200 and lists 14 URLs
+- [ ] `https://theindustryleader.net/sitemap.xml` returns 200 and lists 9 URLs
 - [ ] `https://theindustryleader.net/rss.xml` returns 200 and validates
 - [ ] `/og/home.png` returns 200, 1200×630
 - [ ] Canonicals use `https://theindustryleader.net/...` with trailing slashes
 - [ ] No `noindex` on public pages; `noindex` on style guide and thank-you page
-- [ ] Rich Results Test passes for home, program, projects, testimonials, contact, and a post
+- [ ] Rich Results Test passes for home, about, program, projects, testimonials, and contact
 - [ ] Schema Markup Validator reports no errors
 - [ ] Submit sitemap in **Google Search Console** (Domain property, DNS verification)
 - [ ] Submit sitemap in **Bing Webmaster Tools** (import from GSC is fastest)

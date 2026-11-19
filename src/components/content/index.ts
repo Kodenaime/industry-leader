@@ -1,5 +1,6 @@
 export * from "./AuthorBox";
 export * from "./CaseStudyCard";
+export * from "./EditorialImage";
 export * from "./LegalArticle";
 export * from "./MdxComponents";
 export * from "./PortraitFrame";

@@ -80,12 +80,16 @@ export function ContactForm({ source = "contact-page" }: { source?: string }) {
     });
 
     if (!result.ok) {
-      trackEvent("form_error", { form: "contact", status: result.status });
+      trackEvent("form_error", {
+        form: "contact",
+        status: result.status,
+        submissionId: result.submissionId,
+      });
       setStatus({ type: "error", message: result.message });
       return;
     }
 
-    trackEvent("form_success", { form: "contact" });
+    trackEvent("form_success", { form: "contact", submissionId: result.submissionId });
     reset();
     setStatus({
       type: "success",

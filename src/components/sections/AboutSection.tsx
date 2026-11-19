@@ -11,8 +11,8 @@ import { author } from "@/content/author";
 import { PROJECTS_HREF, PROGRAM_HREF, TESTIMONIALS_HREF } from "@/lib/links";
 
 /**
- * The About page folded into the homepage. Keeps Matthew's story, philosophy,
- * career timeline, and published work while leaving one canonical page.
+ * Matthew's story, philosophy, career timeline, and published work. Rendered on
+ * the standalone /about/ page; the homepage links there instead of duplicating it.
  */
 export function AboutSection() {
   return (

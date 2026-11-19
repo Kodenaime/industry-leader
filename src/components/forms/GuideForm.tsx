@@ -17,7 +17,7 @@ import { trackEvent } from "@/lib/analytics";
 
 type Status = { type: "idle" } | { type: "error"; message: string };
 
-export function GuideForm({ source = "homepage-free-guide" }: { source?: string }) {
+export function GuideForm({ source = "contact-free-guide" }: { source?: string }) {
   const router = useRouter();
   const [status, setStatus] = React.useState<Status>({ type: "idle" });
   const [honeypot, setHoneypot] = React.useState("");
@@ -64,11 +64,15 @@ export function GuideForm({ source = "homepage-free-guide" }: { source?: string 
       },
     });
     if (!result.ok) {
-      trackEvent("form_error", { form: "guide", status: result.status });
+      trackEvent("form_error", {
+        form: "guide",
+        status: result.status,
+        submissionId: result.submissionId,
+      });
       setStatus({ type: "error", message: result.message });
       return;
     }
-    trackEvent("form_success", { form: "guide" });
+    trackEvent("form_success", { form: "guide", submissionId: result.submissionId });
     router.push("/free-guide/thank-you/");
   };
 

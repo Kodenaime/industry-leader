@@ -68,7 +68,6 @@ function linkHref(html, rel) {
 }
 
 const REQUIRED_SCHEMA_FIELDS = {
-  Article: ["headline", "datePublished", "author"],
   BreadcrumbList: ["itemListElement"],
   FAQPage: ["mainEntity"],
   Person: ["name"],
@@ -80,11 +79,10 @@ const REQUIRED_SCHEMA_FIELDS = {
 
 const EXPECTED_TYPES = {
   "/": ["ProfessionalService", "Person"],
-  "/program/": ["Service", "FAQPage"],
+  "/program/": ["Service"],
   "/projects/": ["BreadcrumbList"],
   "/testimonials/": ["BreadcrumbList"],
-  "/contact/": ["BreadcrumbList"],
-  "/insights/strategic-judgment/": ["Article", "BreadcrumbList"],
+  "/contact/": ["BreadcrumbList", "FAQPage"],
 };
 
 function collectSchemaTypes(value, types = new Set()) {

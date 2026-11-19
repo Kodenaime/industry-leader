@@ -77,21 +77,22 @@ HR or people leader looking for leadership development. Needs credibility, outco
 
 | Page | URL | Purpose |
 |---|---|---|
-| Home | `/` | Positioning, proof, program, About, Testimonials, Projects, Insights, Free Guide, Apply, FAQ, conversion |
-| Program | `/program/` | Full 8-week program detail |
-| Projects | `/projects/` | Case studies and outcome framing |
+| Home | `/` | Positioning, proof, program preview, Testimonials, Apply, conversion |
+| Program | `/program/` | Full 8-week program detail and link to Contact FAQs |
+| About | `/about/` | Matthew's story, philosophy, experience, books and media |
+| Projects | `/projects/` | Case studies, outcome framing, and How It Works |
 | Testimonials | `/testimonials/` | All recovered client quotes |
-| Contact | `/contact/` | Contact form + booking |
-| Insight post | `/insights/[slug]/` | SEO content (listed on the homepage) |
+| Contact | `/contact/` | Contact form, booking, Free Guide, and FAQs |
 | Thank You | `/free-guide/thank-you/` | Download confirmation |
 | Privacy | `/privacy/` | Legal |
 | Terms | `/terms/` | Legal |
 | Cookies | `/cookies/` | Legal |
 | 404 | `/404.html` | Error page |
 
-Retired standalone pages (`/about/`, `/apply/`, `/insights/`,
-`/insights/category/<topic>/`, `/free-guide/`, `/results/`) redirect to their
-new homepage anchors or replacement page in `public/.htaccess`.
+Retired standalone pages (`/apply/`, `/insights/`, `/insights/category/<topic>/`,
+`/free-guide/`, `/results/`, `/blog/`, `/becoming-a-top-1/`) redirect to their
+replacement page in `public/.htaccess`. Insight publishing is paused until full
+archive-approved copy is available.
 
 ### 1.7 Functional Requirements
 
@@ -594,31 +595,25 @@ Scale:
 3. Credibility strip
 4. Pain points
 5. Outcomes
-6. Program preview (dark section)
-7. About preview
-8. How it works
-9. Testimonials
-10. Insights preview
-11. Free guide
-12. FAQ
-13. Final CTA
-14. Footer
+6. Program preview with editorial image (dark section)
+7. Testimonials
+8. Apply
+9. Final CTA
+10. Footer
 
 **About:** "A practitioner, not just a theorist." Story, philosophy, credentials, timeline, books/media, CTA.
 
-**Program:** Hero, who it's for/not for, outcomes, 8-week curriculum, inclusions, investment note, testimonials, FAQ, application CTA.
+**Program:** Hero with editorial image, who it's for/not for, outcomes, 8-week curriculum, inclusions, investment note, testimonials, FAQ link, application CTA.
 
 **Apply:** Focused multi-step form with progress indicator and reassurance.
 
-**Results:** "Real leaders. Real shifts." Featured quote, testimonial grid, case studies, CTA.
+**Projects:** "Real leaders. Real shifts." Hero with editorial image, case studies, How It Works, CTA.
 
-**Insights:** Editorial index with featured post, categories, search, grid.
+**Insights:** Paused until full archive-approved article copy is available.
 
-**Post:** Breadcrumbs, title, meta, cover, prose, TOC, pull quotes, author box, share, related, CTA.
+**Free Guide:** "The Authority Blueprint" lead magnet on Contact with cover mockup and email form.
 
-**Free Guide:** "The Authority Blueprint" lead magnet with cover mockup and email form.
-
-**Contact:** Form + booking + email + location + response time.
+**Contact:** Form, booking, email, location, response time, Free Guide, and FAQs.
 
 ### 4.10 Asset Checklist
 
@@ -1017,13 +1012,12 @@ The old site was a WordPress/Elementor/Astra build for Business Reimagined Incor
 
 **Redirect map**
 - `/services/` → `/program/`
-- `/about/` → `/#about`
 - `/apply/` → `/#apply`
-- `/insights/` and `/insights/category/<topic>/` → `/#insights`
-- `/free-guide/` → `/#free-guide`
+- `/insights/` and `/insights/category/<topic>/` → `/`
+- `/free-guide/` → `/contact/#free-guide`
 - `/results/` → `/projects/`
-- `/blog/` → `/#insights`
-- `/becoming-a-top-1/` → `/insights/becoming-a-top-1/`
+- `/blog/` → `/`
+- `/becoming-a-top-1/` → `/`
 - `/feed/` → `/rss.xml`
 - `/comments/feed/` → `/rss.xml`
 - `/sitemap.rss` → `/sitemap.xml`

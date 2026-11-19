@@ -1,4 +1,5 @@
 import { ArrowRight, Check } from "lucide-react";
+import { EditorialImage } from "@/components/content";
 import { Reveal } from "@/components/motion";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -57,7 +58,16 @@ export function ProgramPreview() {
         </div>
 
         <Reveal delay={0.1} className="lg:pt-6">
-          <div className="rounded border border-cloud/15 bg-cloud/5 p-6 sm:p-8">
+          <div className="overflow-hidden rounded-sm border border-cloud/20">
+            <EditorialImage
+              src="/images/sections/leadership-strategy.jpg"
+              alt="Senior professionals collaborating around a table in a modern boardroom"
+              width={1200}
+              height={675}
+              className="h-56 w-full object-cover sm:h-64 lg:h-72"
+            />
+          </div>
+          <div className="relative -mt-8 mx-3 rounded border border-cloud/20 bg-charcoal/95 p-6 shadow-lift sm:mx-5 sm:p-8">
             <dl className="grid grid-cols-2 gap-x-6 gap-y-8">
               <div>
                 <dt className="text-xs uppercase tracking-[0.16em] text-cloud/70">Duration</dt>

@@ -1,24 +1,20 @@
 import type { Metadata } from "next";
 import { ArrowRight, Check, X } from "lucide-react";
+import { EditorialImage } from "@/components/content";
 import { PageShell } from "@/components/layout";
 import { JsonLd } from "@/components/seo";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
-import {
-  FaqSection,
-  FinalCta,
-  PageHero,
-  StickyApplyBar,
-} from "@/components/sections";
+import { FinalCta, PageHero, StickyApplyBar } from "@/components/sections";
 import { Accordion } from "@/components/ui/Accordion";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { getFaqs, getProgram } from "@/lib/content/loaders";
-import { APPLY_HREF, TESTIMONIALS_HREF } from "@/lib/links";
+import { getProgram } from "@/lib/content/loaders";
+import { TESTIMONIALS_HREF } from "@/lib/links";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { breadcrumbSchema, faqPageSchema, serviceSchema } from "@/lib/seo/schema";
+import { breadcrumbSchema, serviceSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = buildMetadata({
   title: "Becoming an Industry Leader Program",
@@ -39,14 +35,12 @@ const crumbs = [{ label: "Home", href: "/" }, { label: "Program" }];
 
 export default function ProgramPage() {
   const program = getProgram();
-  const faqs = getFaqs().filter((faq) => program.faqIds.includes(faq.id));
 
   return (
     <PageShell className="pb-16 lg:pb-0">
       <JsonLd
         data={[
           serviceSchema(program),
-          faqPageSchema(faqs),
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Program", path: "/program/" },
@@ -59,35 +53,48 @@ export default function ProgramPage() {
         description={program.subheadline}
         breadcrumbs={crumbs}
         aside={
-          <div className="rounded border border-line bg-cloud p-6 shadow-soft sm:p-8">
-            <dl className="grid grid-cols-2 gap-x-6 gap-y-7">
-              <div>
-                <dt className="text-xs uppercase tracking-[0.16em] text-stone">Duration</dt>
-                <dd className="mt-1 font-display text-2xl text-ink">{program.duration}</dd>
+          <div className="space-y-6">
+            <div className="overflow-hidden rounded-sm border border-line bg-charcoal">
+              <EditorialImage
+                src="/images/sections/executive-coaching.jpg"
+                alt="Two professionals in a focused one-to-one coaching conversation"
+                width={1200}
+                height={675}
+                loading="eager"
+                fetchPriority="high"
+                className="h-56 w-full object-cover sm:h-64 lg:h-72"
+              />
+            </div>
+            <div className="rounded border border-line bg-cloud p-6 shadow-soft sm:p-8">
+              <dl className="grid grid-cols-2 gap-x-6 gap-y-7">
+                <div>
+                  <dt className="text-xs uppercase tracking-[0.16em] text-stone">Duration</dt>
+                  <dd className="mt-1 font-display text-2xl text-ink">{program.duration}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs uppercase tracking-[0.16em] text-stone">Format</dt>
+                  <dd className="mt-1 font-display text-2xl text-ink">1:1 private</dd>
+                </div>
+                <div>
+                  <dt className="text-xs uppercase tracking-[0.16em] text-stone">Sessions</dt>
+                  <dd className="mt-1 font-display text-2xl text-ink">8 × 60 min</dd>
+                </div>
+                <div>
+                  <dt className="text-xs uppercase tracking-[0.16em] text-stone">Access</dt>
+                  <dd className="mt-1 font-display text-2xl text-ink">Application</dd>
+                </div>
+              </dl>
+              <div className="mt-7 border-t border-line pt-6">
+                <p className="text-sm leading-relaxed text-graphite">{program.investmentNote}</p>
+                <Button
+                  href={program.ctaHref}
+                  className="mt-5 w-full"
+                  icon={<ArrowRight className="h-4 w-4" />}
+                  iconPosition="right"
+                >
+                  {program.ctaLabel}
+                </Button>
               </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.16em] text-stone">Format</dt>
-                <dd className="mt-1 font-display text-2xl text-ink">1:1 private</dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.16em] text-stone">Sessions</dt>
-                <dd className="mt-1 font-display text-2xl text-ink">8 × 60 min</dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.16em] text-stone">Access</dt>
-                <dd className="mt-1 font-display text-2xl text-ink">Application</dd>
-              </div>
-            </dl>
-            <div className="mt-7 border-t border-line pt-6">
-              <p className="text-sm leading-relaxed text-graphite">{program.investmentNote}</p>
-              <Button
-                href={program.ctaHref}
-                className="mt-5 w-full"
-                icon={<ArrowRight className="h-4 w-4" />}
-                iconPosition="right"
-              >
-                {program.ctaLabel}
-              </Button>
             </div>
           </div>
         }
@@ -235,13 +242,23 @@ export default function ProgramPage() {
         </Container>
       </Section>
 
-      <FaqSection
-        id="faq"
-        faqs={faqs}
-        title="Questions about the program."
-        description="If your question is not here, ask it on a discovery call. You will get a direct answer."
-        cta={{ label: "Apply for the program", href: APPLY_HREF }}
-      />
+      <Section tone="cloud">
+        <Container>
+          <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="max-w-2xl space-y-3">
+              <p className="type-eyebrow">Questions</p>
+              <h2 className="type-h3 text-ink">Answers before you apply.</h2>
+              <p className="text-sm leading-relaxed text-graphite">
+                The full FAQ lives on the Contact page, alongside the application and discovery-call
+                details. If your question is not covered there, send it through the contact form.
+              </p>
+            </div>
+            <Button href="/contact/#faq" variant="secondary" className="shrink-0">
+              Read the FAQs
+            </Button>
+          </Reveal>
+        </Container>
+      </Section>
 
       <FinalCta
         title="Your next level is a decision away."

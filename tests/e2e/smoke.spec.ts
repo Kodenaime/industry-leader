@@ -3,9 +3,9 @@ import { expect, test } from "@playwright/test";
 const pages = [
   { path: "/", heading: /become the leader/i },
   { path: "/program/", heading: /become the leader your industry follows/i },
+  { path: "/about/", heading: /about matthew ogieva/i },
   { path: "/projects/", heading: /real leaders/i },
   { path: "/testimonials/", heading: /in their words/i },
-  { path: "/insights/strategic-judgment/", heading: /strategic judgment/i },
   { path: "/contact/", heading: /start a conversation/i },
   { path: "/privacy/", heading: /privacy policy/i },
   { path: "/terms/", heading: /terms of use/i },
@@ -34,34 +34,26 @@ test("unknown route returns the branded 404 page", async ({ page }) => {
   await expect(page.getByRole("link", { name: /return home/i })).toBeVisible();
 });
 
-test("homepage insights section lists every post and links to the feed", async ({ page }) => {
+test("homepage keeps the apply and testimonial sections", async ({ page }) => {
   await page.goto("/");
-  const section = page.locator("#insights");
-  await expect(section.getByRole("heading", { level: 2 })).toHaveText(
-    /notes on leadership, authority, and influence/i,
-  );
-  await expect(section.locator("article")).toHaveCount(6);
-  await expect(section.getByRole("link", { name: /subscribe via rss/i })).toHaveAttribute(
-    "href",
-    "/rss.xml",
-  );
-});
-
-test("homepage contains the folded-in about, free guide and apply sections", async ({ page }) => {
-  await page.goto("/");
-  for (const anchor of ["about", "free-guide", "apply", "testimonials"]) {
+  for (const anchor of ["apply", "testimonials"]) {
     await expect(page.locator(`#${anchor}`)).toBeAttached();
   }
   await expect(page.locator("#testimonials")).toContainText("Bankole Adewumi");
+  await expect(page.locator("#free-guide")).toHaveCount(0);
+  await expect(page.locator("#faq")).toHaveCount(0);
 });
 
-test("post table of contents links to headings", async ({ page }) => {
-  await page.goto("/insights/strategic-judgment/");
-  await page
-    .getByRole("navigation", { name: "On this page" })
-    .getByRole("link", { name: /decide before you are forced to/i })
-    .click();
-  await expect(page).toHaveURL(/#decide-before-you-are-forced-to$/);
+test("contact page contains the free guide and FAQ sections", async ({ page }) => {
+  await page.goto("/contact/");
+  await expect(page.locator("#free-guide")).toBeAttached();
+  await expect(page.locator("#faq")).toBeAttached();
+  await expect(page.locator("#faq")).toContainText("Who is this program for?");
+});
+
+test("projects page contains the how-it-works section", async ({ page }) => {
+  await page.goto("/projects/");
+  await expect(page.locator("#how-it-works")).toBeAttached();
 });
 
 test("program curriculum accordion is keyboard operable", async ({ page }) => {
@@ -76,10 +68,3 @@ test("program curriculum accordion is keyboard operable", async ({ page }) => {
   await expect(details).toHaveJSProperty("open", true);
 });
 
-test("article carries Article and BreadcrumbList structured data", async ({ page }) => {
-  await page.goto("/insights/strategic-judgment/");
-  const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
-  const types = blocks.map((block) => JSON.parse(block)["@type"]);
-  expect(types).toContain("Article");
-  expect(types).toContain("BreadcrumbList");
-});

@@ -1,6 +1,5 @@
 import { ArrowRight, CalendarCheck, CheckCircle2, Download, Mail } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { NewsletterForm } from "@/components/forms/NewsletterForm";
 import { PageShell } from "@/components/layout";
 import { Reveal } from "@/components/motion";
@@ -128,16 +127,6 @@ export default function FreeGuideThankYouPage() {
               </div>
             </div>
 
-            <p className="text-sm text-graphite">
-              Keep reading in the meantime:{" "}
-              <Link
-                href="/#insights"
-                className="font-semibold text-gold-deep underline decoration-gold-deep/30 underline-offset-4"
-              >
-                browse the insights
-              </Link>
-              .
-            </p>
           </Reveal>
         </Container>
       </Section>

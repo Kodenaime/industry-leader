@@ -20,10 +20,6 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
           <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-stone">The shift</dt>
           <dd className="mt-1 text-graphite">{study.shift}</dd>
         </div>
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-stone">Outcome</dt>
-          <dd className="mt-1 text-graphite">{study.outcome}</dd>
-        </div>
       </dl>
     </article>
   );

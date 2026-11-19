@@ -2,7 +2,7 @@
 
 **Project:** The Industry Leader (`theindustryleader.net`)
 **Scope:** Prompt 18 (hardening and audit), covering the complete static site built in Prompts 01–17.
-**Date:** 17 November 2026
+**Date:** 19 November 2026
 **Build:** Next.js 16.4.6, React 19.3.0, `next-mdx-remote` 6.0.0
 **Environment:** Windows 11, Node.js 24.19.0, npm 11.9.0, Chrome 157 (Lighthouse 13.6, mobile emulation)
 
@@ -12,11 +12,11 @@
 | --- | --- | --- |
 | Lint (`npm run lint`) | No errors or warnings | Pass |
 | Typecheck (`npm run typecheck`) | No errors | Pass |
-| Content validation (`npm run content:check`) | 18/18 content files valid | Pass |
-| Production build (`npm run build`) | 27 static routes generated; `out/` written | Pass |
-| SEO audit (`npm run seo:audit`) | 27 HTML pages, **0 errors, 0 warnings** | Pass |
-| Playwright suite (`npm run test:e2e`) | **35/35 passed** (smoke, forms, Axe) | Pass |
-| Axe (WCAG 2.0/2.1/2.2 A + AA) | 0 serious or critical violations on 11 representative pages | Pass |
+| Content validation (`npm run content:check`) | 12/12 content files valid | Pass |
+| Production build (`npm run build`) | 14 static routes generated; `out/` written | Pass |
+| SEO audit (`npm run seo:audit`) | 14 HTML pages, **0 errors, 0 warnings** | Pass |
+| Playwright suite (`npm run test:e2e`) | **29/29 passed** (smoke, forms, Axe) | Pass |
+| Axe (WCAG 2.0/2.1/2.2 A + AA) | 0 serious or critical violations on 8 representative pages | Pass |
 | Lighthouse mobile — accessibility | **100** | Pass |
 | Lighthouse mobile — best practices | **100** | Pass |
 | Lighthouse mobile — SEO | **100** | Pass |
@@ -62,15 +62,15 @@ No critical Lighthouse findings remain:
 - JSON-LD present and expected schema types per page.
 - No `Review` or `AggregateRating` schema (not permitted for this site).
 
-**Result:** 27 HTML pages, **0 errors, 0 warnings**. Report: `reports/seo-audit.json`.
+**Result:** 14 HTML pages, **0 errors, 0 warnings**. Report: `reports/seo-audit.json`.
 
 Covered schema types:
 
 - Global `WebSite` (root layout).
 - Home: `ProfessionalService`, `Person`, `Book`.
-- About: `Person`, `Book`, `BreadcrumbList`.
-- Program: `Service`, `OfferCatalog`, `Offer`, `FAQPage`, `BreadcrumbList`.
-- Insights and posts: `Article`, `WebPage`, `Person`, `Organization`, `BreadcrumbList`.
+- About: `Person`, `BreadcrumbList`.
+- Program: `Service`, `OfferCatalog`, `Offer`, `BreadcrumbList`.
+- Contact: `BreadcrumbList`, `FAQPage`.
 - Legal and conversion pages: `BreadcrumbList`.
 
 ### JSON-LD validation method
@@ -89,12 +89,15 @@ site is live. Rich-result eligibility should be confirmed there.
 
 ## 2. Social images and media
 
-- `scripts/generate-og.mjs` generated branded 1200×630 OG images for the home,
-  program, results, free guide, insights index, five categories, and six posts
-  (plus the default image and variants).
-- `scripts/optimize-images.mjs` produced WebP and AVIF variants alongside PNG:
-  **15 PNG, 15 WebP, 15 AVIF** files.
-- Largest public asset: **52.5 KB** (`/og/insights/executive-presence-and-communication.png`).
+- `scripts/generate-og.mjs` generated branded 1200×630 OG images for the default,
+  home, program, about, projects, testimonials, contact, and free-guide pages.
+- `scripts/optimize-images.mjs` produced WebP and AVIF variants alongside source
+  images: **14 PNG/JPEG, 14 WebP, 14 AVIF** files (8 OG images, 3 headshots, and
+  3 licensed section photographs).
+- Section photography is stored locally from Unsplash under the Unsplash License;
+  source URLs and provenance are recorded in `docs/image-sources.md`.
+- Largest public asset: **280.4 KB** (`/images/sections/leadership-strategy.jpg`);
+  its served AVIF variant is **83.1 KB**. All public assets are under 300 KB.
   No public asset exceeds 300 KB.
 - Content images are currently branded SVG placeholders (portrait and guide cover),
   not unlicensed stock photography. Replace with approved photography before launch
@@ -135,9 +138,8 @@ Optimizations applied:
 Playwright + Axe runs with tags `wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa`, and
 `wcag22aa` on:
 
-`/`, `/program/`, `/projects/`, `/testimonials/`,
-`/insights/strategic-judgment/`, `/free-guide/thank-you/`, `/contact/`,
-`/privacy/`.
+`/`, `/program/`, `/about/`, `/projects/`, `/testimonials/`,
+`/free-guide/thank-you/`, `/contact/`, `/privacy/`.
 
 **Result:** 0 critical or serious violations. A keyboard test confirms the skip
 link is the first focusable element. Manual checks still required for screen-reader
@@ -157,15 +159,13 @@ Accessibility work includes:
 
 ## 5. Navigation, forms, and smoke tests
 
-**30/30 Playwright tests passed**, covering:
+**29/29 Playwright tests passed**, covering:
 
-- One H1 on every public page.
+- One H1 on every public page, including the standalone About page.
 - Branded 404 for unknown routes.
-- Homepage Insights section lists all posts and links to RSS.
-- Homepage contains the folded-in About, Testimonials, Free Guide, and Apply sections.
-- Post table-of-contents anchor links.
+- Homepage contains the Testimonials and Apply sections but not Free Guide or FAQs.
+- Contact contains the Free Guide and FAQ sections; Projects contains How It Works.
 - Native program accordion keyboard operation.
-- Article/BreadcrumbList structured data.
 - Application validation (empty first step and required fields).
 - Contact, newsletter, and free-guide validation and consent.
 - Guide download link on the thank-you page.
@@ -173,10 +173,10 @@ Accessibility work includes:
 
 ## 6. Sitemap, robots, and feeds
 
-- `out/sitemap.xml`: **14 URLs** (8 static pages, 6 posts).
+- `out/sitemap.xml`: **9 URLs** (9 static pages, 0 posts).
 - `out/robots.txt`: allows all public content; disallows `/style-guide/` and
   `/free-guide/thank-you/`; declares the sitemap URL.
-- `out/rss.xml`: **6 items**, valid RSS 2.0.
+- `out/rss.xml`: **0 items**, valid RSS 2.0 (insight publishing is paused).
 - `out/404.html`: branded 404, served by the `.htaccess` `ErrorDocument`.
 - `/style-guide/` and `/free-guide/thank-you/` carry `noindex`.
 
@@ -185,15 +185,18 @@ Accessibility work includes:
 1. **Placeholder free-guide PDF** — `the-authority-blueprint-placeholder.pdf` must
    be replaced with the client-approved PDF before launch. The release script
    prints a warning while it is present.
-2. **Placeholder content** — the portrait is a branded SVG placeholder; case-study
-   outcome text is marked as a placeholder; social links point to platform home
-   pages. Client testimonial quotes and 125×125 headshots were recovered from the
-   old site archive and are published as originals at 48–64px; obtain permission
-   to republish them before launch.
-3. **Forms and booking** — no Formspree endpoints or booking URL are configured in
-   this environment. Forms run in simulated mode until `NEXT_PUBLIC_FORMSPREE_*`
-   and `NEXT_PUBLIC_BOOKING_URL` are set and the site is rebuilt. Production
-   delivery must be tested after configuration.
+2. **Placeholder content** — the portrait is a branded SVG placeholder; social links
+   point to platform home pages. Client testimonial quotes and 125×125 headshots
+   were recovered from the old site archive and are published as originals at
+   48–64px; obtain permission to republish them before launch. Case studies are
+   anonymized examples with the outcome row removed.
+3. **Forms and booking** — no Formspree endpoint or booking URL is configured in
+   this environment. All four forms share `NEXT_PUBLIC_FORMSPREE_ENDPOINT` and add
+   `form`, `submissionId`, `_subject`, consent, and timestamp to each payload;
+   failed submissions keep the visitor's values on screen. In production the
+   form is disabled until the endpoint is set, with an email fallback. Add the
+   shared endpoint and `NEXT_PUBLIC_BOOKING_URL`, rebuild, then test delivery and
+   Formspree filtering before launch.
 4. **Analytics** — disabled because no measurement ID is configured. Enable only
    after consent copy is reviewed.
 5. **Lighthouse 90+ target** — best score on the final build is 78 (85 during the

@@ -25,19 +25,18 @@ AddDefaultCharset UTF-8
 
   # Legacy WordPress and previous-site URLs.
   RewriteRule ^services/?$ /program/ [R=301,L]
-  RewriteRule ^blog/?$ /#insights [R=301,NE,L]
-  RewriteRule ^becoming-a-top-1/?$ /insights/becoming-a-top-1/ [R=301,L]
+  RewriteRule ^blog/?$ / [R=301,L]
+  RewriteRule ^becoming-a-top-1/?$ / [R=301,L]
   RewriteRule ^feed/?$ /rss.xml [R=301,L]
   RewriteRule ^comments/feed/?$ /rss.xml [R=301,L]
   RewriteRule ^sitemap\.rss$ /sitemap.xml [R=301,L]
 
-  # Retired pages whose content now lives on the homepage.
+  # Retired pages with no standalone destination.
   # [NE] keeps the # fragment literal instead of encoding it as %23.
-  RewriteRule ^about/?$ /#about [R=301,NE,L]
   RewriteRule ^apply/?$ /#apply [R=301,NE,L]
-  RewriteRule ^insights/?$ /#insights [R=301,NE,L]
-  RewriteRule ^insights/category(/.*)?$ /#insights [R=301,NE,L]
-  RewriteRule ^free-guide/?$ /#free-guide [R=301,NE,L]
+  RewriteRule ^insights/?$ / [R=301,L]
+  RewriteRule ^insights/category(/.*)?$ / [R=301,L]
+  RewriteRule ^free-guide/?$ /contact/#free-guide [R=301,NE,L]
 
   # Results became Projects.
   RewriteRule ^results/?$ /projects/ [R=301,L]

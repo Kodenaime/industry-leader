@@ -5,11 +5,13 @@
 **Hosting:** Hostinger shared hosting, files in `public_html/`.
 **Repository:** this folder. Build output lives in `out/` (generated, not committed).
 
-**Pages:** Home (`/`), Program, Projects, Testimonials, and Contact. About, Apply,
-Insights, and Free Guide are homepage sections (`#about`, `#apply`, `#insights`,
-`#free-guide`). Individual insight articles stay at `/insights/<slug>/`, and the
-guide confirmation stays at `/free-guide/thank-you/`. Redirects for retired URLs
-live in `public/.htaccess`.
+**Pages:** Home (`/`), Program, About, Projects, Testimonials, and Contact. Apply
+is a homepage section (`#apply`); Free Guide (`#free-guide`) and FAQs (`#faq`) are
+Contact sections, and How It Works lives on the Projects page. Insight publishing
+is paused until full article copy is recovered from the old site archive or
+approved in writing; the `/insights/<slug>/` route can be restored when approved
+posts exist. The guide confirmation stays at `/free-guide/thank-you/`. Redirects
+for retired URLs live in `public/.htaccess`.
 
 ## 1. Before the first deploy
 
@@ -21,25 +23,36 @@ live in `public/.htaccess`.
    | --- | --- | --- |
    | `NEXT_PUBLIC_SITE_URL` | Canonical site URL | Defaults to `https://theindustryleader.net` |
    | `NEXT_PUBLIC_BOOKING_URL` | Cal.com/Calendly scheduling link | Booking buttons go to `/contact/` |
-   | `NEXT_PUBLIC_FORMSPREE_CONTACT_ENDPOINT` | Contact form endpoint | Form shows a development notice |
-   | `NEXT_PUBLIC_FORMSPREE_APPLICATION_ENDPOINT` | Application form endpoint | Form shows a development notice |
-   | `NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ENDPOINT` | Newsletter endpoint | Form shows a development notice |
-   | `NEXT_PUBLIC_FORMSPREE_GUIDE_ENDPOINT` | Free-guide endpoint | Form shows a development notice |
+   | `NEXT_PUBLIC_FORMSPREE_ENDPOINT` | Shared public endpoint for all four forms | Forms are disabled in production with an email fallback |
+   | `NEXT_PUBLIC_FORMSPREE_CONTACT_ENDPOINT` | Optional contact override | Uses the shared endpoint |
+   | `NEXT_PUBLIC_FORMSPREE_APPLICATION_ENDPOINT` | Optional application override | Uses the shared endpoint |
+   | `NEXT_PUBLIC_FORMSPREE_NEWSLETTER_ENDPOINT` | Optional newsletter override | Uses the shared endpoint |
+   | `NEXT_PUBLIC_FORMSPREE_GUIDE_ENDPOINT` | Optional guide override | Uses the shared endpoint |
    | `NEXT_PUBLIC_ANALYTICS_ID` | GA4 measurement ID (`G-…`) | No analytics and no consent banner |
 
    These values are baked in at build time. After changing them, rebuild and
    re-upload the site.
 
+   Form delivery: all four forms post to `NEXT_PUBLIC_FORMSPREE_ENDPOINT`. Each
+   payload includes `form`, `submissionId`, `_subject`, consent, and timestamp,
+   so one Formspree inbox can be filtered by form and tied to analytics.
+   Failed submissions keep the visitor's entered values on screen so no lead is
+   lost to a retry; in production without an endpoint the form is disabled and
+   shows the email fallback instead of accepting data it cannot deliver.
+
 4. Replace `public/downloads/the-authority-blueprint-placeholder.pdf` with the
    client-approved guide PDF. Keep the same filename or update the link in
    `content/lead-magnet.ts` and the thank-you page.
 5. Replace placeholder imagery/copy if approved assets have arrived:
-   - `content/case-studies.ts` outcome text (marked placeholders)
    - `content/testimonials.ts` — real quotes and headshots were recovered from the
      old site archive, but re-publication permission must be confirmed
    - `public/images/portrait-placeholder.svg`
    - `public/images/authority-blueprint-cover.svg`
    - social URLs in `content/site.ts`
+
+   Section photography in `public/images/sections/` is licensed Unsplash stock;
+   see `docs/image-sources.md` for source URLs and license details. After replacing
+   any source image, run `npm run images:optimize` to regenerate AVIF/WebP variants.
 6. Create the Formspree forms and a Cal.com/Calendly event, then put the public
    endpoints in `.env.local`.
 
@@ -49,25 +62,32 @@ live in `public/.htaccess`.
 | --- | --- |
 | Site name, email, location, socials, description | `content/site.ts` |
 | Author bio, credentials, book | `content/author.ts` |
-| About section copy (homepage) | `content/about.ts` |
+| About page copy | `content/about.ts` |
 | Program modules, outcomes, pricing/offer text | `content/programs.ts` |
 | Testimonials | `content/testimonials.ts` |
 | Case studies | `content/case-studies.ts` |
 | FAQs | `content/faqs.ts` |
 | Free-guide copy | `content/lead-magnet.ts` |
 | Header/footer navigation | `content/navigation.ts` |
-| Blog posts | `content/insights/<slug>.mdx` |
+| Blog posts | `content/insights/<slug>.mdx` (currently empty) |
 | Privacy, terms, cookies | `content/legal/*.mdx` |
 | Page titles/descriptions/schema | `src/app/**/page.tsx` and `src/lib/seo/` |
 
-### Add an insight post
+### Add an insight post (when approved copy is available)
 
-1. Create `content/insights/my-new-post.mdx` with the same frontmatter shape as an
-   existing post (title, description, date, category, author, image, draft flag).
-2. Add a 1200×630 image at `public/og/insights/my-new-post.png` (or run
-   `npm run og:generate` after adding it to the generator list).
-3. Run the build checks below. The post, homepage Insights section, RSS feed,
-   sitemap, and structured data are generated automatically.
+Only publish articles whose full text was recovered from the old site archive or
+approved in writing. Titles and excerpts alone are not enough. The homepage
+Insights section is currently hidden because no posts are published.
+
+1. Create `content/insights/my-new-post.mdx` with frontmatter that matches
+   `postFrontmatterSchema` in `src/lib/content/schemas.ts`.
+2. Run `npm run og:generate` to create `public/og/insights/my-new-post.png` from
+   the post frontmatter.
+3. Restore `src/app/insights/[slug]/page.tsx` from version history; Next.js
+   static export requires at least one generated post route.
+4. Run the build checks below. The RSS feed and sitemap update automatically.
+5. To show the section again, re-add `<InsightsPreview>` to `src/app/page.tsx`
+   and the footer link in `content/navigation.ts`.
 
 ## 3. Build and publish
 

@@ -23,7 +23,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <Section tone="cloud">
+    <Section id="how-it-works" tone="cloud" className="scroll-mt-24">
       <Container className="space-y-12 sm:space-y-16">
         <Reveal>
           <SectionHeading

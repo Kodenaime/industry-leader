@@ -39,7 +39,7 @@ test("contact form validates required fields", async ({ page }) => {
 });
 
 test("free guide form requires consent", async ({ page }) => {
-  await page.goto("/#free-guide");
+  await page.goto("/contact/#free-guide");
   await waitForHydration(page, "#free-guide form");
   await page.getByLabel("First name").fill("Test Reader");
   await page.locator("#guide-email").fill("reader@example.com");

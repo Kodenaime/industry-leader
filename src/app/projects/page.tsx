@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout";
 import { JsonLd } from "@/components/seo";
-import { CaseStudyCard } from "@/components/content";
-import { FinalCta, PageHero } from "@/components/sections";
+import { CaseStudyCard, EditorialImage } from "@/components/content";
+import { FinalCta, HowItWorks, PageHero } from "@/components/sections";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -20,7 +20,7 @@ export const metadata: Metadata = buildMetadata({
     "Anonymized case studies from leaders who turned expertise into authority. See the challenge, the shift, and the work behind the Becoming an Industry Leader program.",
   path: "/projects/",
   image: "/og/projects.png",
-  keywords: ["leadership coaching projects", "case studies", "client outcomes"],
+  keywords: ["leadership coaching projects", "case studies", "coaching work"],
 });
 
 const stats = [
@@ -46,6 +46,25 @@ export default function ProjectsPage() {
         title="Real leaders. Real shifts."
         description="Not a wall of logos. A record of what changes when capable professionals decide to be seen, heard, and followed."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Projects" }]}
+        aside={
+          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 translate-x-3 translate-y-3 rounded-sm border border-gold/70"
+            />
+            <div className="relative overflow-hidden rounded-sm border border-line bg-charcoal">
+              <EditorialImage
+                src="/images/sections/leadership-team.jpg"
+                alt="A leadership team walking together through a modern office"
+                width={1200}
+                height={675}
+                loading="eager"
+                fetchPriority="high"
+                className="h-64 w-full object-cover sm:h-80"
+              />
+            </div>
+          </div>
+        }
       >
         <div className="flex flex-wrap gap-3 pt-2">
           <Button href="/#apply">Apply for the program</Button>
@@ -75,7 +94,7 @@ export default function ProjectsPage() {
             <SectionHeading
               eyebrow="Case studies"
               title="What the work looks like in practice."
-              description="Anonymized examples of the challenge, the shift, and the outcome. Details are shared only with permission."
+              description="Anonymized examples of the challenge and the shift. Details are shared only with permission."
               className="max-w-3xl"
             />
           </Reveal>
@@ -90,9 +109,9 @@ export default function ProjectsPage() {
           <Reveal>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <p className="max-w-xl text-sm leading-relaxed text-graphite">
-                Client outcomes vary. The program is designed to produce clarity, stronger
-                judgment, and a credible leadership presence — not a guaranteed title or
-                promotion.
+                Every engagement is different. The program is designed to produce clarity,
+                stronger judgment, and a credible leadership presence — not a guaranteed title
+                or promotion.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button href="/testimonials/" variant="secondary">
@@ -104,6 +123,8 @@ export default function ProjectsPage() {
           </Reveal>
         </Container>
       </Section>
+
+      <HowItWorks />
 
       <FinalCta
         title="Your next level is a decision away."

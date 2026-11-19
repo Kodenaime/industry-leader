@@ -82,12 +82,16 @@ export function NewsletterForm({
     setIsSubmitting(false);
 
     if (!result.ok) {
-      trackEvent("form_error", { form: "newsletter", status: result.status });
+      trackEvent("form_error", {
+        form: "newsletter",
+        status: result.status,
+        submissionId: result.submissionId,
+      });
       setStatus({ type: "error", message: result.message });
       return;
     }
 
-    trackEvent("newsletter_signup", { source });
+    trackEvent("newsletter_signup", { source, submissionId: result.submissionId });
     setEmail("");
     setConsent(false);
     setErrors({});

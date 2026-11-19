@@ -1,18 +1,20 @@
 import { CalendarCheck, Clock, Mail, MapPin, MessageSquare } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EditorialImage } from "@/components/content";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { PageShell } from "@/components/layout";
 import { Reveal } from "@/components/motion";
 import { JsonLd } from "@/components/seo";
-import { PageHero } from "@/components/sections";
+import { FaqSection, FreeGuideSection, PageHero } from "@/components/sections";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SITE, SOCIAL_LINKS } from "@/lib/constants";
+import { getFaqs } from "@/lib/content/loaders";
 import { BOOKING_HREF, BOOKING_IS_EXTERNAL } from "@/lib/links";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { breadcrumbSchema } from "@/lib/seo/schema";
+import { breadcrumbSchema, faqPageSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
@@ -25,20 +27,43 @@ export const metadata: Metadata = buildMetadata({
 
 export default function ContactPage() {
   const bookingHref = BOOKING_IS_EXTERNAL ? BOOKING_HREF : "#contact-form";
+  const faqs = getFaqs();
 
   return (
     <PageShell>
       <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Contact", path: "/contact/" },
-        ])}
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact/" },
+          ]),
+          faqPageSchema(faqs),
+        ]}
       />
       <PageHero
         eyebrow="Contact"
         title="Start a conversation."
         description="Questions about the program, a speaking invitation, or a coaching conversation — send a note and you will get a real reply."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
+        aside={
+          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 -translate-x-3 translate-y-3 rounded-sm border border-gold/70"
+            />
+            <div className="relative overflow-hidden rounded-sm border border-line bg-charcoal">
+              <EditorialImage
+                src="/images/sections/executive-coaching.jpg"
+                alt="Two professionals in conversation in a bright modern office"
+                width={1200}
+                height={675}
+                loading="eager"
+                fetchPriority="high"
+                className="h-64 w-full object-cover sm:h-80"
+              />
+            </div>
+          </div>
+        }
       />
 
       <Section>
@@ -117,7 +142,7 @@ export default function ContactPage() {
                     <p className="mt-1 text-sm text-graphite">
                       Include the event, audience, date, and format.{" "}
                       <Link
-                        href="/#about"
+                        href="/about/"
                         className="underline decoration-line underline-offset-4 hover:text-ink"
                       >
                         More about Matthew
@@ -164,6 +189,17 @@ export default function ContactPage() {
           </div>
         </Container>
       </Section>
+
+      <FreeGuideSection />
+      <FaqSection
+        id="faq"
+        className="scroll-mt-24"
+        faqs={faqs}
+        eyebrow="Questions"
+        title="Questions before you reach out."
+        description="The practical details first. If your question is not here, send it through the form above and you will get a direct answer."
+        cta={{ label: "Apply for the program", href: "/#apply" }}
+      />
     </PageShell>
   );
 }

@@ -20,7 +20,7 @@ export function ProjectsPreview({ caseStudies }: { caseStudies: CaseStudy[] }) {
             <SectionHeading
               eyebrow="Projects"
               title="What the work looks like in practice."
-              description="Anonymized examples of the challenge, the shift, and the direction of the outcome."
+              description="Anonymized examples of the challenge and the shift."
               className="max-w-2xl"
             />
             <Link

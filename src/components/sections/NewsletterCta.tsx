@@ -2,7 +2,7 @@ import { NewsletterForm } from "@/components/forms/NewsletterForm";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 
-export function NewsletterCta({ source = "insights" }: { source?: string }) {
+export function NewsletterCta({ source = "site" }: { source?: string }) {
   return (
     <Section tone="dark">
       <Container>

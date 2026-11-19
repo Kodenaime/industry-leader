@@ -11,6 +11,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://theindustryleader.net/about/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://theindustryleader.net/projects/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -39,41 +44,5 @@
     <loc>https://theindustryleader.net/cookies/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://theindustryleader.net/insights/building-high-performance-teams/</loc>
-    <lastmod>2026-11-02T00:00:00.000Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://theindustryleader.net/insights/strategic-judgment/</loc>
-    <lastmod>2026-09-08T00:00:00.000Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://theindustryleader.net/insights/executive-presence-and-communication/</loc>
-    <lastmod>2026-07-14T00:00:00.000Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://theindustryleader.net/insights/influence-without-authority/</loc>
-    <lastmod>2026-05-20T00:00:00.000Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://theindustryleader.net/insights/clarity-that-commands-attention/</loc>
-    <lastmod>2026-03-10T00:00:00.000Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://theindustryleader.net/insights/becoming-a-top-1/</loc>
-    <lastmod>2026-01-15T00:00:00.000Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>

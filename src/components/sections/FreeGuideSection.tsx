@@ -26,7 +26,7 @@ const steps = [
   },
 ];
 
-/** The former /free-guide/ page, now a homepage lead-magnet section. */
+/** The former /free-guide/ page, now the lead-magnet section on /contact/. */
 export function FreeGuideSection() {
   return (
     <Section id="free-guide" tone="cloud" className="scroll-mt-24">
@@ -79,7 +79,7 @@ export function FreeGuideSection() {
                 leadership and influence.
               </p>
               <div className="mt-6">
-                <GuideForm source="homepage-free-guide" />
+                <GuideForm source="contact-free-guide" />
               </div>
             </div>
 

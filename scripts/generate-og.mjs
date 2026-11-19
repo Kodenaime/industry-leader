@@ -26,6 +26,7 @@ const PAGES = [
   { slug: "default", eyebrow: "The Industry Leader", title: "Become the leader your industry follows.", subtitle: "Leadership coaching for capable professionals." },
   { slug: "home", eyebrow: "The Industry Leader", title: "Become the leader your industry follows.", subtitle: "One-on-one coaching for clarity, presence, and influence." },
   { slug: "program", eyebrow: "8-week 1:1 coaching program", title: "Becoming an Industry Leader", subtitle: "Turn expertise into authority, influence, and lasting impact." },
+  { slug: "about", eyebrow: "About Matthew", title: "A practitioner, not just a theorist.", subtitle: "Leadership coaching by Matthew Ogieva." },
   { slug: "projects", eyebrow: "Projects", title: "Real leaders. Real shifts.", subtitle: "What changes when capability meets authority." },
   { slug: "testimonials", eyebrow: "Client testimonials", title: "In their words.", subtitle: "What leaders say about the work." },
   { slug: "contact", eyebrow: "Contact", title: "Start a conversation.", subtitle: "Applications, speaking, and advisory inquiries." },
